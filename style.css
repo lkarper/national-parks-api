@@ -1,0 +1,78 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+form {
+    margin: 10px;
+}
+
+form label {
+    margin: 5px;
+}
+
+form input {
+    margin: 10px 0;
+}
+
+.results-slow {
+    margin: 10px;
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+h2 {
+    margin: 10px;
+    align-self: flex-start;
+    font-family: 'Roboto', sans-serif;
+}
+
+#num-parks-found {
+    margin: 10px;
+    font-size: 24px;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+
+#results li {
+    list-style: none;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 10px;
+}
+
+.addresses {
+    display: flex;
+}
+
+.addresses section, .addresses p{
+    padding: 5px;
+    margin: 5px;
+}
+
+p {
+    line-height: 26px;
+}
+
+.hidden {
+    display: none;
+}
+
+.results-header {
+    display: flex;
+}
