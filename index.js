@@ -25,21 +25,21 @@ function fetchParks() {
         .then(responseJson => {
             displayParks(responseJson);
         })
-      .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error));
 }
 
 function displayParks(responseJson) {
     const parks = responseJson.data;
     $('#results').removeClass('hidden');
     $('#park-list').empty();
-    $('#error-message').text('');
-    if (parks.length === 1) {
-        $('#num-parks-found').text(`${parks.length} park in ${$('#state option:selected').text()} returned`);
-    } else {
-        $('#num-parks-found').text(`${parks.length} parks in ${$('#state option:selected').text()} returned`);
-    }
     if (parks.length === 0) {
-        $('#error-message').text(`Sorry, no results found for "${$('#state').val()}".  Try a different query.`)
+        $('#num-parks-found').text(`${parks.length} parks in "${$('#state').val().split(",").join(", ")}" returned. 
+            Try a different query and be certain that you have entered the correct postal abbreviation(s).`)
+    }
+    else if (parks.length === 1) {
+        $('#num-parks-found').text(`${parks.length} park in "${$('#state').val().split(",").join(", ")}" returned.`);
+    } else {
+        $('#num-parks-found').text(`${parks.length} parks in "${$('#state').val().split(",").join(", ")}" returned.`);
     }
     for (let park of parks) {
         const name = park.fullName;
@@ -75,14 +75,14 @@ function obtainAddress1(park) {
         physicalAddressLines = `${park.addresses[0].line1}<br>`;
     }
     if (park.addresses[0].line2) {
-        physicalAddressLines = 
+        physicalAddressLines =
             `${physicalAddressLines}
             ${park.addresses[0].line2}<br>
             `;
     }
-    if (park.addresses[0].line3){
-        physicalAddressLines = 
-        `${physicalAddressLines}
+    if (park.addresses[0].line3) {
+        physicalAddressLines =
+            `${physicalAddressLines}
         ${park.addresses[0].line3}<br>
         `;
     }
@@ -104,16 +104,16 @@ function obtainAddress2(park) {
         physicalAddressLines = `${park.addresses[1].line1}<br>`;
     }
     if (park.addresses[1].line2) {
-        physicalAddressLines = 
+        physicalAddressLines =
             `${physicalAddressLines}
             ${park.addresses[1].line2}<br>
             `;
     }
-    if (park.addresses[1].line3){
-        physicalAddressLines = 
-        `${physicalAddressLines}
-        ${park.addresses[1].line3}<br>
-        `;
+    if (park.addresses[1].line3) {
+        physicalAddressLines =
+            `${physicalAddressLines}
+            ${park.addresses[1].line3}<br>
+            `;
     }
     return `<section>
                 <h4>${park.addresses[1].type} Address:</h4>
